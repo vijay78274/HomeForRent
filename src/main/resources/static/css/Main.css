@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: yellow;
+}
+.outer{
+    height: 100%;
+    max-height: fit-content;
+    max-width: 1000px;
+    width: 100%;
+}
+.button-container{
+    height:fit-content;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.button1, .button2{
+    border-radius:8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50%;
+    background-color: black;
+}   
+.button1 a, .button2 a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+.button1:hover, .button2:hover {
+    background-color: white;
+}
+
+.button1:hover a, .button2:hover a {
+    color: black; 
+}
+.container{
+    height: 100%;
+    max-height: fit-content;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.div1{
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+    background-image: url("/images/main_page.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.div2{
+    padding: 10px;
+    width: 50%;
+}
+p{
+    margin-top: 10px;
+    font-size: large;
+}
