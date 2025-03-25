@@ -1,4 +1,4 @@
-package com.example.homeforrent;
+package com.example.homeforrent.User;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
@@ -31,7 +32,7 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable()) 
         .authorizeHttpRequests(request -> 
             request
-            .requestMatchers("/css/**", "/js/**","/images/**","/start","/tenet/signup","/landlord/signup").permitAll() 
+            .requestMatchers("/css/**", "/javascript/**","/images/**","/start","/tenet/signup","/landlord/signup","/cloudinary/upload").permitAll() 
             .requestMatchers("/tenet/**").hasRole("Tenet") 
             .requestMatchers("/landlord/**").hasRole("Landlord") 
                 .anyRequest().authenticated())
@@ -47,7 +48,7 @@ public class SecurityConfig {
             .logoutUrl("/logout")  
             .logoutSuccessUrl("/login?logout")  
             .permitAll()
-            )
+            ).httpBasic(Customizer.withDefaults())
         .build();
     }
 

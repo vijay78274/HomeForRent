@@ -1,4 +1,4 @@
-package com.example.homeforrent;
+package com.example.homeforrent.LandLord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,12 @@ public class LandLordController {
     
     @PostMapping("/signup")
     public String postMethodName(@RequestParam String name,
-    @RequestParam String phone,
     @RequestParam String TypeofRoom,
     @RequestParam String RoomFor,
     @RequestParam String userName,
-    @RequestParam String rawPassword) {
-        landLordService.createLandLord(name, phone, TypeofRoom, RoomFor, userName, rawPassword);
+    @RequestParam String rawPassword,
+    @RequestParam String imageUrl) {
+        landLordService.createLandLord(name, TypeofRoom, RoomFor, userName, rawPassword, imageUrl);
         return "redirect:/landlord/home";
     }
     @GetMapping("/home")

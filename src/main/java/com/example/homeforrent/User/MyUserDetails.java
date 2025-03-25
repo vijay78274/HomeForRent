@@ -1,4 +1,4 @@
-package com.example.homeforrent;
+package com.example.homeforrent.User;
 
 import java.util.Collection;
 import java.util.List;

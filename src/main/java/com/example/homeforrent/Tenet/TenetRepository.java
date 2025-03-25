@@ -1,4 +1,4 @@
-package com.example.homeforrent;
+package com.example.homeforrent.Tenet;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

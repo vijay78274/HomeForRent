@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/TenetSignup.css}">
+    <script th:src="@{/javascript/Signup.js}"></script>
 </head>
 <body>
     <div class="container">
         <h2>SignUp</h2>
-        <form>
+        <form id="signupForm" th:action="@{/tenet/signup}" th:method="post" onsubmit="uploadAndSubmit(event)">
             <div class="outer">
                 <div class="column1">
                     <div class="input-group">
-                        <input type="text" id="name" placeholder="Full Name" required>
+                        <input type="text" id="name" name="name" placeholder="Full Name" required>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="age" placeholder="Age" required>
+                        <input type="text" id="age" name="age" placeholder="Age" required>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="occupation" placeholder="Occupation" required>
+                        <input type="text" id="occupation" name = "occupation" placeholder="Occupation" required>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="userName" placeholder="Create Username" required>
+                        <input type="text" id="userName" name="userName" placeholder="Create Username" required>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="password" placeholder="Create Password" required>
+                        <input type="text" id="password" name="rawPassword" placeholder="Create Password" required>
                     </div>
                 </div>
                 <div class="column2">
@@ -44,36 +45,40 @@
                     <div class="radio-button">
                         <p>Room Type</p>
                         <label>
-                            <input type="radio" name="roomtype" value="single"> Single
+                            <input type="radio" name="TypeofRoom" value="single"> Single
                         </label>
                         <label>
-                            <input type="radio" name="roomtype" value="double"> Double
+                            <input type="radio" name="TypeofRoom" value="double"> Double
                         </label>
                     </div>
                     <div class="radio-button">
                         <p>Martial Status</p>
                         <label>
-                            <input type="radio" name="marital" value="unmarried"> Unmarried
+                            <input type="radio" name="martial" value="unmarried"> Unmarried
                         </label>
                         <label>
-                            <input type="radio" name="marital" value="married"> Married
+                            <input type="radio" name="martial" value="married"> Married
                         </label>
                     </div>
                     <div class="radio-button">
                         <p>Room For</p>
                         <label>
-                            <input type="radio" name="roomfor" value="individual"> Individual
+                            <input type="radio" name="RoomFor" value="individual"> Individual
                         </label>
                         <label>
-                            <input type="radio" name="roomfor" value="couple"> Couple
+                            <input type="radio" name="RoomFor" value="couple"> Couple
                         </label>
                         <label>
-                            <input type="radio" name="roomfor" value="family"> Family
+                            <input type="radio" name="RoomFor" value="family"> Family
                         </label>
                     </div>
+                    <input type="file" accept="image/*" id="fileInput"><br><br>
                 </div>
             </div>
-            <button type="submit" class="btn">Signup</button>
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <button type="submit" class="btn" id="submitButton">Signup</button>
             <div class="signup">
                 <p>Already a user? <a href="/login">LogIn</a></p>
             </div>

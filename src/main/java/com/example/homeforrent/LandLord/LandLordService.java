@@ -1,9 +1,12 @@
-package com.example.homeforrent;
+package com.example.homeforrent.LandLord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.homeforrent.User.User;
+import com.example.homeforrent.User.UserRepository;
 
 @Service
 public class LandLordService {
@@ -16,11 +19,11 @@ public class LandLordService {
     @Transactional
     public String createLandLord(
     String name,
-    String phone,
     String TypeofRoom,
     String RoomFor,
     String userName,
-    String rawPassword){
+    String rawPassword,
+    String imageUrl){
         if (userRepository.existsByusername(userName)) {
             return "Username already taken! Please choose a different one.";
         }
@@ -29,9 +32,9 @@ public class LandLordService {
         landlord.setUserName(userName);
         // tenet.setRoom_images(image);
         landlord.setName(name);
-        landlord.setPhone(phone);
         landlord.setRoomFor(RoomFor);
         landlord.setTypeofRoom(TypeofRoom);
+        landlord.setImages(imageUrl);
         String password = passwordEncoder.encode(rawPassword);
         landlord.setPassword(password);
         user.setUsername(userName);

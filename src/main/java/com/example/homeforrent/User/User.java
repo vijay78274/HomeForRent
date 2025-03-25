@@ -1,4 +1,4 @@
-package com.example.homeforrent;
+package com.example.homeforrent.User;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

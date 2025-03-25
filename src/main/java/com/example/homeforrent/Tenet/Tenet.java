@@ -1,19 +1,23 @@
-package com.example.homeforrent;
+package com.example.homeforrent.Tenet;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "LandLord")
-public class Landlord {
+@Document(collection = "Tenet")
+public class Tenet {
     @Id
     private String userName;
     private String name;
     private String phone;
+    private String age;
+    private String gender;
+    private String occuption;
+    private String martial;
     private String TypeofRoom;
     private String RoomFor;
-    private String status;
+    private String image;
     private String password;
-    private String[] room_images;
+    
     public String getPassword() {
         return password;
     }
@@ -38,6 +42,24 @@ public class Landlord {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public String getOccuption() {
+        return occuption;
+    }
+    public void setOccuption(String occuption) {
+        this.occuption = occuption;
+    }
+    public String getMartial() {
+        return martial;
+    }
+    public void setMartial(String martial) {
+        this.martial = martial;
+    }
     public String getTypeofRoom() {
         return TypeofRoom;
     }
@@ -50,17 +72,16 @@ public class Landlord {
     public void setRoomFor(String roomFor) {
         RoomFor = roomFor;
     }
-    public String getStatus() {
-        return status;
+    public String getImage() {
+        return image;
     }
-    public void setStatus(String status) {
-        this.status = status;
+    public void setImage(String image) {
+        this.image = image;
     }
-    public String[] getRoom_images() {
-        return room_images;
+    public String getAge() {
+        return age;
     }
-    public void setRoom_images(String[] room_images) {
-        this.room_images = room_images;
+    public void setAge(String age) {
+        this.age = age;
     }
-    
 }
