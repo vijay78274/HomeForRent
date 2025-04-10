@@ -3,6 +3,7 @@ package com.example.homeforrent.Tenet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,10 @@ public class TenetControllers {
     @RequestParam String RoomFor,
     @RequestParam String imageUrl,
     @RequestParam String userName,
-    @RequestParam String rawPassword) {
-        tenetService.createTenet(name, age, gender, occupation, martial, TypeofRoom, RoomFor, imageUrl, userName, rawPassword);
+    @RequestParam String rawPassword, @RequestParam String address,
+    @RequestParam double latitude,
+    @RequestParam double longitude) {
+        tenetService.createTenet(name, age, gender, occupation, martial, TypeofRoom, RoomFor, imageUrl, userName, rawPassword,address,latitude,longitude);
         return "redirect:/tenet/home";
     }
     @GetMapping("/home")
@@ -57,4 +60,9 @@ public class TenetControllers {
         model.addAttribute("landlord", landlord);
         return "SingleTenet";
     }
+    // @GetMapping("/getbyId/{userName}")
+    // public ResponseEntity<Landlord> getLandLordById(@PathVariable String userName, Model model){
+    //     Landlord landlord = tenetService.getLandlordbyId(userName);
+    //     return ResponseEntity.ok(landlord);
+    // }
 }

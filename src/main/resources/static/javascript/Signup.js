@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const signupForm = document.getElementById("signupForm");
 
     async function uploadAndSubmit(event) {
-        event.preventDefault(); 
-
+        event.preventDefault();
         signupButton.disabled = true;
         progressContainer.style.display = "block";
         progressBar.style.width = "0%";
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!validTypes.includes(file.type)) {
                 alert("Invalid file type! Please select an image file.");
                 signupButton.disabled = false;
-                progressContainer.style.display = "none"; 
+                progressContainer.style.display = "none";
                 return;
             }
 
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append("file", file);
 
             try {
-
                 progressBar.style.width = "30%";
 
                 const response = await fetch("/cloudinary/upload", {
@@ -38,31 +36,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response.ok) throw new Error("Image upload failed");
 
                 const imageUrl = await response.text();
-
-                // Show full progress and update hidden field
                 progressBar.style.width = "70%";
-                const hiddenImageInput = document.createElement("input");
-                hiddenImageInput.type = "hidden";
-                hiddenImageInput.name = "imageUrl";
+
+                let hiddenImageInput = document.getElementById("hiddenImageUrl");
+                if (!hiddenImageInput) {
+                    hiddenImageInput = document.createElement("input");
+                    hiddenImageInput.type = "hidden";
+                    hiddenImageInput.name = "imageUrl";
+                    hiddenImageInput.id = "hiddenImageUrl";
+                    signupForm.appendChild(hiddenImageInput);
+                }
                 hiddenImageInput.value = imageUrl;
-                signupForm.appendChild(hiddenImageInput);
 
             } catch (error) {
                 alert("Error uploading image: " + error.message);
                 signupButton.disabled = false;
-                progressContainer.style.display = "none"; // Hide progress bar
+                progressContainer.style.display = "none";
                 return;
             }
         }
 
-        //  Finalizing progress before submission
         progressBar.style.width = "100%";
 
         setTimeout(() => {
-            signupForm.submit(); //  Submit form after upload
-        }, 500); //  Small delay to let user see progress completion
+            signupForm.submit();
+        }, 500);
     }
 
-    //  Attach event listener AFTER DOM is fully loaded
-    signupForm.onsubmit = uploadAndSubmit;
+    signupForm.addEventListener("submit", uploadAndSubmit);
 });

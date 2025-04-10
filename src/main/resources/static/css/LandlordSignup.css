@@ -118,7 +118,7 @@ body {
 }
 
 
-.radio-button input[type="radio"] {
+.radio-button input[type="checkbox"] {
     appearance: none;
     width: 18px;
     height: 18px;
@@ -130,7 +130,7 @@ body {
     transition: 0.3s;
 }
 
-.radio-button input[type="radio"]:checked {
+.radio-button input[type="checkbox"]:checked {
     border-color: black;
     background-color:black;
 }

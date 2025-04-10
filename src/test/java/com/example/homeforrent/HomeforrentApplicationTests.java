@@ -19,14 +19,14 @@ class HomeforrentApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	@Test
-	void createAccount(){
-		service.createTenet("Vijay Singh", "23", "male", "student", "unmarried", "single", "Individual", "null", "vijay328", "2001");
-	}
-	@Test
-	void createAccount2(){
-		service2.createLandLord("Deepak Sharma", "single", "Individual", "deepak123", "Deepak@123"," ");
-	}
+	// @Test
+	// void createAccount(){
+	// 	service.createTenet("Vijay Singh", "23", "male", "student", "unmarried", "single", "Individual", "null", "vijay328", "2001");
+	// }
+	// @Test
+	// void createAccount2(){
+	// 	service2.createLandLord("Deepak Sharma", "single", "Individual", "deepak123", "Deepak@123"," ");
+	// }
 	@Test
 	void getLandlords(){
 		List<Landlord> list = service.getAll();

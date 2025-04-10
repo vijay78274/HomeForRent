@@ -15,12 +15,12 @@ public class LandLordController {
     
     @PostMapping("/signup")
     public String postMethodName(@RequestParam String name,
-    @RequestParam String TypeofRoom,
-    @RequestParam String RoomFor,
+    @RequestParam String[] TypeofRoom,
+    @RequestParam String[] RoomFor,
     @RequestParam String userName,
     @RequestParam String rawPassword,
-    @RequestParam String imageUrl) {
-        landLordService.createLandLord(name, TypeofRoom, RoomFor, userName, rawPassword, imageUrl);
+    @RequestParam String imageUrl, @RequestParam String address) {
+        landLordService.createLandLord(name, TypeofRoom, RoomFor, userName, rawPassword, imageUrl,address);
         return "redirect:/landlord/home";
     }
     @GetMapping("/home")

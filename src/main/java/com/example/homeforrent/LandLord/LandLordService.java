@@ -19,24 +19,26 @@ public class LandLordService {
     @Transactional
     public String createLandLord(
     String name,
-    String TypeofRoom,
-    String RoomFor,
+    String[] TypeofRoom,
+    String[] RoomFor,
     String userName,
     String rawPassword,
-    String imageUrl){
+    String imageUrl,
+    String address){
         if (userRepository.existsByusername(userName)) {
             return "Username already taken! Please choose a different one.";
         }
         Landlord landlord = new Landlord();
         User user = new User();
         landlord.setUserName(userName);
-        // tenet.setRoom_images(image);
         landlord.setName(name);
         landlord.setRoomFor(RoomFor);
         landlord.setTypeofRoom(TypeofRoom);
         landlord.setImages(imageUrl);
+        landlord.setStatus("Available");
         String password = passwordEncoder.encode(rawPassword);
         landlord.setPassword(password);
+        landlord.setAddress(address);
         user.setUsername(userName);
         user.setPassword(password);
         user.setRole("Landlord");

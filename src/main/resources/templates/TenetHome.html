@@ -21,14 +21,12 @@
             <i class="fa-solid fa-circle-user fa-xl" style="color: #ffffff;"></i>
         </div>
     </nav>
-    <!-- <div class="grid-container" id="gridContainer">
-       
-    </div> -->
+
     <div class="grid-container">
         <div class="grid-item" th:each="landlord : ${landlords}" th:id="${landlord.userName}">
             <h3 th:text="${landlord.name}"></h3>
-            <h3 th:text="${landlord.TypeofRoom}"></h3>
-            <h3 th:text="${landlord.RoomFor}"></h3>
+            <div class="room"><h3 th:each="ele : ${landlord.TypeofRoom}" th:text="@{${ele}}"></h3></div>
+            <div class="room"><h3 th:each="ele : ${landlord.RoomFor}" th:text="@{${ele}}"></h3></div>
             <img th:src="${landlord.images}" alt="Tenant Image">
         </div>
     </div>

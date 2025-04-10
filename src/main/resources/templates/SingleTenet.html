@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/SingleTenet.css}">
 </head>
 <body>
-    
+    <div class="outer">
+        <div class="box1">
+            <h2 th:text="${landlord.name}"></h2>
+        </div>
+        <div class="box2">
+            <div class="in"><h4>Room for:</h4><p th:each="ele : ${landlord.RoomFor}" th:text="@{${ele}}"></p></div>
+            <div class="in"><h4>Room Type:</h4><p th:each="ele : ${landlord.TypeofRoom}" th:text="@{${ele}}"></p></div>
+            <div class="in"><h4>Status :</h4><p th:text="${landlord.status}"></p></div>
+        </div>
+        <div class="address"><h4>Address:</h4> <p th:text="${landlord.address}"></p></div>
+        <div class="chat">Send Request</div>
+        <div class="image-container">
+            <img th:each="img : ${landlord.roomImages}" th:src="@{${img}}">
+        </div>
+    </div>
 </body>
 </html>
