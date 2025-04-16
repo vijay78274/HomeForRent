@@ -45,18 +45,19 @@ p{
     margin: 10px;
     font-size: 1.5rem;
 }
-.chat{
+.box{
     cursor: pointer;
-    margin: 20px;
+    margin: 10px;
     font-size: 1.2rem;
-    border-radius: 10vh;
+    /* border-radius: 10vh; */
     color: white;
-    width: fit-content;
+    /* width: fit-content; */
+    width: 200px;
     height: fit-content;
-    padding: 15px;
+    padding: 20px;
     background-color: black;
 }
-.chat:hover{
+.box:hover{
     color: black;
     background-color: white;
     transform: scale(1.05);
@@ -71,4 +72,9 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.buttons{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
 }

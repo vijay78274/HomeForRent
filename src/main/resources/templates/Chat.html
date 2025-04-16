@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+    <link rel="stylesheet" th:href="@{/css/Chat.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+    <input type="hidden" id="sender" th:value="${sender}" />
+    <input type="hidden" id="receiver" th:value="${receiver}" />
+
+<div class="chat-container">
+    <div class="chat-header">Chat with <span id="receiver-name" th:text="${receiver}"></span></div>
+
+    <div class="chat-box" id="chat-box">
+        <!-- Messages will be dynamically inserted here -->
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+<script th:src="@{/javascript/Chat.js}"></script>
+</body>
+</html>

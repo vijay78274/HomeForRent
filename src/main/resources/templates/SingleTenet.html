@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/SingleTenet.css}">
+    <script th:src="@{/javascript/SingleTenet.js}"></script>
 </head>
 <body>
     <div class="outer">
@@ -16,7 +17,11 @@
             <div class="in"><h4>Status :</h4><p th:text="${landlord.status}"></p></div>
         </div>
         <div class="address"><h4>Address:</h4> <p th:text="${landlord.address}"></p></div>
-        <div class="chat">Send Request</div>
+        <div class="buttons">
+            <div class="chat box" th:id="${landlord.userName}">Request Chat</div>
+            <div class="contract box" th:id="${landlord.userName}">Request Contract</div>
+        </div>
+        <div id="request-status" style="margin-top: 10px; font-weight: bold;"></div>
         <div class="image-container">
             <img th:each="img : ${landlord.roomImages}" th:src="@{${img}}">
         </div>

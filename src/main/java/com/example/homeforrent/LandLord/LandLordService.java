@@ -1,10 +1,14 @@
 package com.example.homeforrent.LandLord;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.homeforrent.Tenet.Tenet;
+import com.example.homeforrent.Tenet.TenetRepository;
 import com.example.homeforrent.User.User;
 import com.example.homeforrent.User.UserRepository;
 
@@ -14,6 +18,8 @@ public class LandLordService {
     UserRepository userRepository;
     @Autowired
     LandLordRepository landLordRepository;
+    @Autowired
+    TenetRepository tenetRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
     @Transactional
@@ -45,5 +51,9 @@ public class LandLordService {
         landLordRepository.save(landlord);
         userRepository.save(user);
         return "Account created successfully!";
+    }
+    public List<Tenet> getAll(){
+        List<Tenet> list = tenetRepository.findAll();
+        return list;
     }
 }
