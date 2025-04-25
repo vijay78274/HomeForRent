@@ -11,23 +11,25 @@
   <div class="outer">
     <div class="accepted">
       <h3>Chats</h3>
-          <div class="list-column" th:each="req : ${acceptedRequests}" th:attr="data-name=${req.landlordUsername}, data-status=${req.status}">
+          <div class="list-column" th:each="req : ${acceptedRequests}" th:attr="data-name=${req.from}, data-status=${req.status}">
             <img th:src="@{/images/profile-user.png}">
             <div class="list-row">
-                <p th:text="${req.landlordUsername}"></p>
+                <p th:text="${req.from}"></p>
                 <p>Tap to chat</p>
             </div>
           </div>
     </div>
     <div class="pending">
       <h3>Pending Requests</h3>
-          <div class="list-column" th:each="req : ${pendingRequests}" th:attr="data-name=${req.landlordUsername}, data-status=${req.status}">
+          <div class="list-column" th:each="req : ${pendingRequests}" th:attr="data-name=${req.from}, data-status=${req.status}">
             <img th:src="@{/images/profile-user.png}">
             <div class="list-row">
-                <p th:text="${req.landlordUsername}"></p>
+                <p th:text="${req.from}"></p>
                 <p>Tap to chat</p>
             </div>
+            <div class="choice"><img class="accept" th:id="${req.from}" src="/images/checklist.png"><img class="reject" src="/images/cross.png"></div>
           </div>
+          <div class="msg"></div>
     </div>
   </div>
 </body>

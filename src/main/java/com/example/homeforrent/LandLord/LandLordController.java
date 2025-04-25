@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,5 +45,11 @@ public class LandLordController {
     @ResponseBody
     public List<Tenet> getItems() {
         return landLordService.getAll();
+    }
+    @GetMapping("/getbyId/{userName}")
+    public String getLandLordById(@PathVariable String userName, Model model){
+        Tenet tenet = landLordService.getTenetbyId(userName);
+        model.addAttribute("tenant", tenet);
+        return "SingleLandlord";
     }
 }

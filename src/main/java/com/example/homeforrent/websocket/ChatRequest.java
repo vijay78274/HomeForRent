@@ -10,8 +10,8 @@ public class ChatRequest {
     @Id
     private String id;
 
-    private String tenantUsername;
-    private String landlordUsername;
+    private String from;
+    private String to;
 
     private String status; // PENDING, ACCEPTED, REJECTED
 
@@ -25,20 +25,20 @@ public class ChatRequest {
         this.id = id;
     }
 
-    public String getTenantUsername() {
-        return tenantUsername;
+    public String getFrom() {
+        return from;
     }
 
-    public void setTenantUsername(String tenantUsername) {
-        this.tenantUsername = tenantUsername;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    public String getLandlordUsername() {
-        return landlordUsername;
+    public String getto() {
+        return to;
     }
 
-    public void setLandlordUsername(String landlordUsername) {
-        this.landlordUsername = landlordUsername;
+    public void setto(String to) {
+        this.to = to;
     }
 
     public String getStatus() {

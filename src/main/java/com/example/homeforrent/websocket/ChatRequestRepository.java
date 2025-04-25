@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ChatRequestRepository extends MongoRepository<ChatRequest, String> {
-    List<ChatRequest> findByLandlordUsername(String landlordUsername);
-    List<ChatRequest> findByTenantUsername(String tenantUsername);
-    Optional<ChatRequest> findByTenantUsernameAndLandlordUsername(String tenant, String landlord);
+    List<ChatRequest> findByTo(String to);
+    List<ChatRequest> findByFrom(String from);
+    Optional<ChatRequest> findByFromAndTo(String from, String to);
 }
 

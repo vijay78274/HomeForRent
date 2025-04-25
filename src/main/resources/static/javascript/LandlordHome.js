@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const statusDiv = document.getElementById("request-status");
+    // const statusDiv = document.getElementById("request-status");
     document.querySelectorAll(".chat").forEach(item => {
         item.addEventListener("click", (event) => {
             const id = event.currentTarget.getAttribute("id");
+            const container = event.currentTarget.closest(".grid-item");
+            const statusDiv = container.querySelector(".request-status");
             console.log("Navigating to chat with:", id);
             fetch(`/request-send?to=${encodeURIComponent(id)}`, {
                 method: 'POST'
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => {
                 if(error.message=="Request already exits"){
-                    window.location.href="/landlord/chat-page"
+                    window.location.href="/chat-page"
                 }
                 statusDiv.innerText = "❌ " + error.message;
                 statusDiv.style.color = "red";

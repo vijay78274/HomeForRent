@@ -56,4 +56,8 @@ public class LandLordService {
         List<Tenet> list = tenetRepository.findAll();
         return list;
     }
+    public Tenet getTenetbyId(String id){
+        Tenet tenet = tenetRepository.findByUserName(id);
+        return tenet;
+    }
 }
