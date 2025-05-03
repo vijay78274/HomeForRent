@@ -44,3 +44,6 @@ Run project
 - Current Landlord/Tenant
 - Secure Payment
 
+## Screenshots
+
+![Screenshot 2025-05-03 211028](https://github.com/user-attachments/assets/693e7557-5f45-4989-a6ec-0964c88d0789)
