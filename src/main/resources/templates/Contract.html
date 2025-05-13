@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Room</title>
-    <link rel="stylesheet" th:href="@{/css/LandlordContract}">
+    <link rel="stylesheet" th:href="@{/css/LandlordContract.css}">
 </head>
 <body>
     <div class="outer">
-        <h1>Landlord Contract</h1>
+        <h1>Contract</h1>
         <br>
-        <form action="/landlordContract" method="post">
+        <input type="hidden" id="from" th:id="${from}">
+        <input type="hidden" id="to" th:id="${to}">
+        <input type="hidden" id="role" th:id="${role}">
+        <form action="/contract/save" method="post">
             <div class="input-group">
                 <input placeholder="Enter full name" required>
             </div>

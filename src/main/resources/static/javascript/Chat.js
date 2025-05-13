@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
 let stompClient;
 const sender = document.getElementById('sender').value;
 const receiver = document.getElementById('receiver').value;
+const role = document.getElementById('role').value;
+const contract = document.getElementById("contract");
+if(role=="Tenet"){
+    contract.style.display="none"
+}
 console.log("Sender:", sender);
 console.log("Receiver:", receiver);
 function connect() {
@@ -58,5 +63,8 @@ function scrollToBottom() {
 }
 window.sendMessage = sendMessage;
 connect();
+    contract.addEventListener("click",()=>{
+        window.location.href=`/contract?from=${sender}&to=${receiver}&role=${role}`;
+    });
 });
 

@@ -52,13 +52,12 @@ public class ContractController {
         }
         return ResponseEntity.ok(contract);
     }
-    @GetMapping("contract/get")
-    public String getMethodName(@RequestParam String from, Authentication authentication, Model model) {
-        MyUserDetails details = (MyUserDetails)authentication.getPrincipal();
-        String to = details.getUsername();
-        Contract contract = repository.findByFromAndTo(from, to);
-        model.addAttribute("contract",contract);
-        return "LandlordContract";
+    @GetMapping("contract")
+    public String contract(@RequestParam String from, @RequestParam String to, @RequestParam String role, Model model){
+        model.addAttribute("from", from);
+        model.addAttribute("to",to);
+        model.addAttribute("role", role);
+        return "Contract";
     }
     @GetMapping("fullcontract/get")
     public String fullContract(@RequestParam String from, Authentication authentication, Model model) {

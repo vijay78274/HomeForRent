@@ -11,11 +11,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.homeforrent.User.MyUserDetails;
 
 @Controller
 public class ChatMessageController {
@@ -36,10 +40,15 @@ public class ChatMessageController {
     }
 
     @GetMapping("/chat/{receiverUsername}")
-    public String chatPage(@PathVariable String receiverUsername, Model model, Principal principal) {
-        String senderUsername = principal.getName(); // the logged-in user
+    public String chatPage(@PathVariable String receiverUsername, Model model, Authentication authenticate) {
+        MyUserDetails myUserDetails = (MyUserDetails)authenticate.getPrincipal();
+
+        String senderUsername = myUserDetails.getUsername();
+        String role = myUserDetails.getRole();
+
         model.addAttribute("sender", senderUsername);
         model.addAttribute("receiver", receiverUsername);
+        model.addAttribute("role", role);
         return "Chat";
     }
     @GetMapping("/messages")

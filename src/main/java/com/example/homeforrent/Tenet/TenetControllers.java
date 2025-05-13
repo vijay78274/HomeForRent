@@ -1,6 +1,7 @@
 package com.example.homeforrent.Tenet;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.homeforrent.LandLord.Landlord;
-
+import com.example.homeforrent.websocket.ChatRequest;
+import com.example.homeforrent.websocket.ChatRequestRepository;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TenetControllers { 
     @Autowired
     private TenetService tenetService;
+    @Autowired
+    private ChatRequestRepository repository;
     
     @PostMapping("/signup")
     public String postMethodName(@RequestParam String name,
@@ -56,12 +60,13 @@ public class TenetControllers {
     @GetMapping("/getbyId/{userName}")
     public String getLandLordById(@PathVariable String userName, Model model){
         Landlord landlord = tenetService.getLandlordbyId(userName);
+        Optional<ChatRequest> request = repository.findByFromAndTo(userName,"");
+
         model.addAttribute("landlord", landlord);
         return "SingleTenet";
     }
-    // @GetMapping("/getbyId/{userName}")
-    // public ResponseEntity<Landlord> getLandLordById(@PathVariable String userName, Model model){
-    //     Landlord landlord = tenetService.getLandlordbyId(userName);
-    //     return ResponseEntity.ok(landlord);
-    // }
+    @GetMapping("/contract")
+    public String getMethodName() {
+        return "LandlordContract";
+    }
 }

@@ -51,5 +51,5 @@ public class LandLordController {
         Tenet tenet = landLordService.getTenetbyId(userName);
         model.addAttribute("tenant", tenet);
         return "SingleLandlord";
-    }
+    }   
 }

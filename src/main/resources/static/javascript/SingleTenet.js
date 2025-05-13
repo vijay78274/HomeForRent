@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".chat").forEach(item => {
         item.addEventListener("click", (event) => {
             const id = event.currentTarget.getAttribute("id");
-            console.log("Navigating to chat with:", id);
             fetch(`/request-send?to=${encodeURIComponent(id)}`, {
                 method: 'POST'
             })
