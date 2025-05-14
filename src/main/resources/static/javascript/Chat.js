@@ -64,7 +64,7 @@ function scrollToBottom() {
 window.sendMessage = sendMessage;
 connect();
     contract.addEventListener("click",()=>{
-        window.location.href=`/contract?from=${sender}&to=${receiver}&role=${role}`;
+        window.location.href=`/landlordcontract?to=${receiver}`;
     });
 });
 

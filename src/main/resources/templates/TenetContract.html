@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/TenetContract.css}">
+</head>
+<body>
+    <div class="outer landlord">
+        <h1>Landlord Contract</h1>
+        <br>
+            <div class="input-group">
+                <input placeholder="Enter full name" th:value="${contract.fullName}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter adhaar card number" th:value="${contract.adhaar}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room Type" th:value="${contract.roomType}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room For" th:value="${contract.roomFor}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter rent amount" th:value="${contract.rent}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter your phone number" th:value="${contract.phone}" readonly>
+            </div>
+            <img th:src="${contract.adhaarImage}">
+    </div>
+
+    <div class="outer tenet">
+        <h1>Tenant Contract</h1>
+        <br>
+        <form id="contractForm" th:action="@{/contract/save}" th:method="post"  onsubmit="uploadAndSubmit(event)">
+            <input type="hidden" name="to" th:value="${contract.from}">
+            <div class="input-group">
+                <input placeholder="Enter full name" name="fullName" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter adhaar card number" name="adhaar" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room Type" name="roomType" th:value="${contract.roomType}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room For" name="roomFor" th:value="${contract.roomFor}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter rent amount" name="rent" th:value="${contract.rent}" readonly>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter your phone number" name="phone" required>
+            </div>
+            <div class="input-group">
+                <label for="imageUpload">Upload adhaar card:</label>
+                <input type="file" accept="image/*" id="fileInput" required>
+            </div>
+            <div class="check-box">
+                <input type="checkbox" required><textarea readonly>Entry detail filled above is true and legal. I accept the contract Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, est! Repudiandae fugit voluptate nam reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi repudiandae tenetur voluptates iste necessitatibus sapiente? </textarea>
+            </div>
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <button type="submit" id="submitButton" >Submit</button>
+        </form>
+    </div>
+    <script th:src="@{/javascript/LandlordContract.js}"></script>
+</body>
+</html>

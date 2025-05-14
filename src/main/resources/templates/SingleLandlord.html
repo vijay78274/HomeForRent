@@ -16,10 +16,7 @@
             <div class="in"><h4>Room Type:</h4><p th:text="${tenant.TypeofRoom}"></p></div>
         </div>
         <div class="address"><h4>Address:</h4> <p th:text="${tenant.address}"></p></div>
-        <div class="buttons">
-            <div class="chat box" th:id="${tenant.userName}">Request Chat</div>
-            <div class="contract box" th:id="${tenant.userName}">Request Contract</div>
-        </div>
+        <div class="chat box" th:id="${tenant.userName}">Request Chat</div>
         <div id="request-status" style="margin-top: 10px; font-weight: bold;"></div>
         <!-- <div class="image-container">
             <img th:each="img : ${tenant.roomImages}" th:src="@{${img}}">

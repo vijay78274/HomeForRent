@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" th:href="@{/css/LandlordContract.css}">
+</head>
+<body>
+    <div class="outer">
+        <h1>Contract</h1>
+        <br>
+        <form id="contractForm" th:action="@{/contract/save}" th:method="post"  onsubmit="uploadAndSubmit(event)">
+            <input type="hidden" name="to" th:value="${to}">
+            <div class="input-group">
+                <input placeholder="Enter full name" name="fullName" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter adhaar card number" name="adhaar" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room Type" name="roomType" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Room For" name="roomFor" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter rent amount" name="rent" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter your phone number" name="phone" required>
+            </div>
+            <div class="input-group">
+                <label for="imageUpload">Upload adhaar card:</label>
+                <input type="file" accept="image/*" id="fileInput" required>
+            </div>
+            <div class="check-box">
+                <input type="checkbox" required><textarea readonly>Entry detail filled above is true and legal. I accept the contract Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, est! Repudiandae fugit voluptate nam reiciendis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi repudiandae tenetur voluptates iste necessitatibus sapiente? </textarea>
+            </div>
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <button type="submit" id="submitButton" >Submit</button>
+        </form>
+    </div>
+    <script th:src="@{/javascript/LandlordContract.js}"></script>
+</body>
+</html>

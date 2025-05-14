@@ -1,6 +1,7 @@
 package com.example.homeforrent.contract;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +25,16 @@ public class ContractController {
     @Autowired 
     private FullContractRepository fullContractRepository;
     
-    @PostMapping("contract/save")
-    public ResponseEntity<Contract> postMethodName(@RequestParam String to,
+    @PostMapping("/contract/save")
+    public String postMethodName(@RequestParam String to,
+    @RequestParam String fullName,
     @RequestParam String adhaar,
     @RequestParam String roomFor,
     @RequestParam String roomType,
     @RequestParam String rent,
-    @RequestParam String phone, Authentication authentication) {
+    @RequestParam String phone,
+    @RequestParam String adhaarImage,
+    Authentication authentication) {
         MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
         String from = userDetails.getUsername();
         String role = userDetails.getRole();
@@ -42,23 +46,24 @@ public class ContractController {
         contract.setPhone(phone);
         contract.setRole(role);
         contract.setRent(rent);
+        contract.setFullName(fullName);
         contract.setRoomFor(roomFor);
         contract.setRoomType(roomType);
+        contract.setAdhaarImage(adhaarImage);
         repository.save(contract);
         if(repository.findByFromAndTo(to, from)!=null){
             Contract landContract = repository.findByFromAndTo(to, from);
             FullContract fullContract = new FullContract(to, from, LocalDateTime.now(), adhaar, landContract.getAdhaar(), roomFor, roomType, rent, landContract.getPhone(), phone);
             fullContractRepository.save(fullContract);
         }
-        return ResponseEntity.ok(contract);
+        return "redirect:/chat-page";
     }
-    @GetMapping("contract")
-    public String contract(@RequestParam String from, @RequestParam String to, @RequestParam String role, Model model){
-        model.addAttribute("from", from);
+    @GetMapping("/landlordcontract")
+    public String contract(@RequestParam String to, Model model){
         model.addAttribute("to",to);
-        model.addAttribute("role", role);
-        return "Contract";
+        return "LandlordContract";
     }
+    
     @GetMapping("fullcontract/get")
     public String fullContract(@RequestParam String from, Authentication authentication, Model model) {
         MyUserDetails details = (MyUserDetails)authentication.getPrincipal();

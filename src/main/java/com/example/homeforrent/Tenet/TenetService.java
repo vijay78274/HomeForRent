@@ -34,8 +34,7 @@ public class TenetService {
     String RoomFor,
     String imageUrl,
     String userName,
-    String rawPassword,
-    String address, Double latitude, Double longitude){
+    String rawPassword){
         if (userRepository.existsByusername(userName)) {
             return "Username already taken! Please choose a different one.";
         }

@@ -73,8 +73,3 @@ p{
     justify-content: center;
     align-items: center;
 }
-.buttons{
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-}

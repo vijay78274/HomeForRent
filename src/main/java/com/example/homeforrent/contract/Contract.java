@@ -9,6 +9,13 @@ public class Contract {
     @Id
     private String id;
     private String role;
+    private String adhaarImage;
+    public String getAdhaarImage() {
+        return adhaarImage;
+    }
+    public void setAdhaarImage(String adhaarImage) {
+        this.adhaarImage = adhaarImage;
+    }
     private String to;
     public String getTo() {
         return to;
@@ -69,6 +76,13 @@ public class Contract {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    private String fullName;
+    public String getFullName() {
+        return fullName;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
     private String from;
     private LocalDateTime contractDate;
