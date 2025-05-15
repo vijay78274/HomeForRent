@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/CurrentLandlord.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <button id="download">Download</button>
+    <div id="pdf-content">
+        <div class="current">
+            <h1>Monthly Status</h1>
+            <div class="div">
+                <p>May</p>
+                <p>Date</p>
+                <p>Paid</p>
+            </div>
+            <div class="div">
+                <p>June</p>
+                <p>Date</p>
+                <p>Paid</p>
+            </div>
+            <div class="div">
+                <p>July</p>
+                <p>Date</p>
+                <p>Paid</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="outer landlord">
+                <h1>Landlord contract</h1>
+                <br>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.landlordName}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.landlordAdhaar}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input  th:value="${fullcontract.roomType}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.roomFor}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.rent}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.landlordPhone}" readonly>
+                    </div>
+                    <img th:src="${fullcontract.landlordAdhaarImage}">
+            </div>
+        
+            <div class="outer tenet">
+                <h1>Tenant contract</h1>
+                <br>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.tenantName}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.tenantAdhaar}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input  th:value="${fullcontract.roomType}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input  th:value="${fullcontract.roomFor}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.rent}" readonly>
+                    </div>
+                    <div class="input-group">
+                        <input th:value="${fullcontract.tenantPhone}" readonly>
+                    </div>
+                    <img th:src="${fullcontract.tenantAdhaarImage}">
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/javascript/CurrentLandlord.js}"></script>
+</body>
+</html>

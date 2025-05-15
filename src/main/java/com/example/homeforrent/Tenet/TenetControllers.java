@@ -12,6 +12,8 @@ import com.example.homeforrent.LandLord.Landlord;
 import com.example.homeforrent.User.MyUserDetails;
 import com.example.homeforrent.contract.Contract;
 import com.example.homeforrent.contract.ContractRepository;
+import com.example.homeforrent.contract.FullContract;
+import com.example.homeforrent.contract.FullContractRepository;
 import com.example.homeforrent.websocket.ChatRequestRepository;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @RequestMapping("/tenet")
 public class TenetControllers { 
+    @Autowired
+    private FullContractRepository fullContractRepository;
     @Autowired
     private TenetService tenetService;
     @Autowired
@@ -83,4 +87,14 @@ public class TenetControllers {
         model.addAttribute("landlord", landlord);
         return "SingleTenet";
     }
+
+    @GetMapping("/currentLandlord")
+    public String getMethodName(Authentication authentication,Model model) {
+        MyUserDetails userDetails = (MyUserDetails)authentication.getPrincipal();
+        String tenant = userDetails.getUsername();
+        FullContract fullContract =  fullContractRepository.findByTenantName(tenant);
+        model.addAttribute("fullcontract",fullContract);
+        return "CurrentLandlord";
+    }
+    
 }

@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
+        
+
         progressBar.style.width = "100%";
 
         setTimeout(() => {

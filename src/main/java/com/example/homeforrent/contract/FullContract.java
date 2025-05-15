@@ -18,11 +18,25 @@ public class FullContract {
     private String rent;
     private String landlordPhone;
     private String tenantPhone;
+    private String tenantAdhaarImage;
+    public String getTenantAdhaarImage() {
+        return tenantAdhaarImage;
+    }
+    public void setTenantAdhaarImage(String tenantAdhaarImage) {
+        this.tenantAdhaarImage = tenantAdhaarImage;
+    }
+    public String getLandlordAdhaarImage() {
+        return landlordAdhaarImage;
+    }
+    public void setLandlordAdhaarImage(String landlordAdhaarImage) {
+        this.landlordAdhaarImage = landlordAdhaarImage;
+    }
+    private String landlordAdhaarImage;
    
     
     public FullContract(String landlordName, String tenantName, LocalDateTime contractDate, String tenantAdhaar,
             String landlordAdhaar, String roomFor, String roomType, String rent, String landlordPhone,
-            String tenantPhone) {
+            String tenantPhone, String tenantAdhaarImage, String landlordAdhaarImage) {
         this.landlordName = landlordName;
         this.tenantName = tenantName;
         this.contractDate = contractDate;
@@ -33,6 +47,8 @@ public class FullContract {
         this.rent = rent;
         this.landlordPhone = landlordPhone;
         this.tenantPhone = tenantPhone;
+        this.tenantAdhaarImage=tenantAdhaarImage;
+        this.landlordAdhaarImage=landlordAdhaarImage;
     }
     public String getId() {
         return id;

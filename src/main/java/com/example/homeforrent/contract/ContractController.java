@@ -53,10 +53,11 @@ public class ContractController {
         repository.save(contract);
         if(repository.findByFromAndTo(to, from)!=null){
             Contract landContract = repository.findByFromAndTo(to, from);
-            FullContract fullContract = new FullContract(to, from, LocalDateTime.now(), adhaar, landContract.getAdhaar(), roomFor, roomType, rent, landContract.getPhone(), phone);
+            String landlordAdhaarImage = landContract.getAdhaarImage();
+            FullContract fullContract = new FullContract(to, from, LocalDateTime.now(), adhaar, landContract.getAdhaar(), roomFor, roomType, rent, landContract.getPhone(), phone, adhaarImage, landlordAdhaarImage);
             fullContractRepository.save(fullContract);
         }
-        return "redirect:/chat-page";
+        return "/chat-page";
     }
     @GetMapping("/landlordcontract")
     public String contract(@RequestParam String to, Model model){
